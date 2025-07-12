@@ -49,7 +49,7 @@ export function SignUpForm({
         },
       });
       if (error) throw error;
-      await createSession(data.user?.id)
+      await createSession(data.user!.id)
       router.push("/");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");

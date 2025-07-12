@@ -1,8 +1,14 @@
 "use server";
 import "server-only";
 import { SignJWT, jwtVerify } from "jose";
-import { SessionPayload } from "./definitions";
 import { cookies } from "next/headers";
+
+interface SessionPayload {
+  userId: string;
+  expiresAt: Date;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
 
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
